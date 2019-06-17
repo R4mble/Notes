@@ -1,0 +1,6 @@
+review总结
+    @RequestParam 没必要
+    @PathVariable 参数没必要
+    jdbcType OTHER
+
+    JsonNode 抽象类

@@ -1,0 +1,52 @@
+<html>
+    <h1>Drop Image Here</h1>
+    <script>
+        var wsUrl = "ws://echo.websocket.org/echo";
+        var ws = new WebSocket(wsUrl);
+        ws.onopen = function() {
+            console.log("open");
+        }
+
+        ws.onmessage = function(e) {
+            var blob = e.data;
+            console.log("message: " + blob.size + " bytes");
+            if (window.webkitURL) {
+                URL = webkitURL;
+            }
+
+            var uri = URL.createObjectURL(blob);
+            var img = document.createElement("img");
+            img.src = uri;
+            document.body.appendChild(img);
+        }
+
+        document.ondrop = function(e) {
+            document.body.style.backgroundColor = "#fff";
+            try {
+                e.preventDefault();
+                handleFileDrop(e.dataTransfer.files[0]);
+                return false;
+            } catch(err) {
+                console.log(err);
+            }
+        }
+
+        document.ondragover = function(e) {
+            e.preventDefault();
+            document.body.style.backgroundColor = "#6fff41";
+        }
+        
+        document.ondragleave = function() {
+            document.body.style.backgroundColor = "#fff";
+        }
+
+        function handleFileDrop(file) {
+            var reader = new FileReader();
+            reader.readAsArrayBuffer(file);
+            reader.onload = function() {
+                console.log("sending: " + file.name);
+                ws.send(reader.result)
+            }
+        }
+    </script>
+</html>
