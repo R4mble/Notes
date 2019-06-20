@@ -35,18 +35,16 @@
 	​	ZADD tutorials 1 redis 2 mongodb 3 mysql
 	​	ZRANGE tutorials 0 10 WITHSOCRES
 - #### 位图(bitmap)
-
+比特位组成的数组
 - ####  hyperLoglog
 
 - #### 地理空间(geospatial).
 
 ### 事务(transaction)
-```redis
-MULTI
-INCR likes
-INCR visitors
-EXEC
-```
+    MULTI
+    INCR likes
+    INCR visitors
+    EXEC
 ### 排序
     LPUSH mylist 4 3 2 6 9
     SORT mylist
@@ -57,24 +55,61 @@ EXEC
     SET session uuid11
     EXPIRE session 20 
     TTL session
-管道命令(Piplining)
+### 管道命令(Piplining)
 
-发布/订阅
+### 发布/订阅
     SUBSCRIBE redisChat
     PUBLISH redisChat "Learn redis"
-复制(replication)
+### 复制(replication)
 
-Lua脚本(Lua scripting)
+### Lua脚本(Lua scripting)
 
-LRU驱动事件(LRU eviction)
+### LRU驱动事件(LRU eviction)
 
 
 ### 磁盘持久化(persistence)
 - #### RDB
-
+##### 默认的持久化方式: 将服务器某个时间点上的数据库状态(非空数据库以及相关键值)保存到一个经过压缩的二进制文件中(dump.rdb)
+##### 手动持久化命令:
+1. SAVE: 阻塞Redis服务器进程
+2. BGSAVE: 派生出一个子进程,由子进程负责创建RDB文件,服务器父进程继续处理命令请求.
 - #### AOF
 
 
-Redis哨兵(Sentinel)
+### Redis哨兵(Sentinel)
 
-自动分区(Cluster)
+### 自动分区(Cluster)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

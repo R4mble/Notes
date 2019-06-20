@@ -2,8 +2,18 @@
 - multi-version concurrency control (MVCC), Oracle中的快照隔离
 - 面向对象, 可以添加自定义函数.
 - 可拓展, 可以自定义数据类型,索引类型. 
+
+PostgreSQL与MySQL的对比:
+  1. MySQL多表连接查询只支持Nest Loop,不支持hash join和sort merge join,子查询性能较低,不支持sequence
+  2. 性能优化工具和度量信息不足, 异步复制,无法通过主从做到数据零丢失
+  3. 在线操作功能弱.
+
 数据类型: 
-基本数据类型: Integer, Numeric, String, Boolean
+基本数据类型: Integer, Numeric, String, Boolean, 二进制bytea, 
+字符型: varchar(n), char(n), text
+位串类型: bit(n), bit varying(n)
+枚举类型: enum
+网络地址类型: cidr, inet, macaddr
 结构型: Data/Time, Array, Range, UUID
 文档型: JSON, XML, K-V
 几何型: 点, 线, 圈, 多边形

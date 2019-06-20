@@ -70,3 +70,9 @@ ${}: 仅仅为String替换，在动态SQL解析阶段进行变量替换。
     枚举或其他对象
 
 缓存配置
+
+
+@SpringBootTest 注解必须要加
+路径前面的/不能省略
+@RequestBody 在实体类上加上 @JsonRootName(value = "user")
+这么写json {"user":{"email":"sanshi.30@qq.com","username":"Ramble","password":"1234567"}}
