@@ -1,3 +1,8 @@
+---
+title: MongoDB
+date: 2019-06-29 17:55:26
+---
+
 集合
     创建集合
         db.createColleaction(name, options)
@@ -44,3 +49,17 @@
             db.col.update({title: 'MongoDB教程'}, {$set: {title: 'MongoDB'}})
             要修改多条参数:
             db.col.update({title: 'MongoDB教程'}, {$set: {title: 'MongoDB'}}, multi: true)
+
+    查询文档:
+            db.col.find({likes: 100})
+        小于,大于: 
+            db.col.find({likes: {$lt:50}}) 
+            db.col.find({likes: {$gt:50}})
+        AND:
+            db.col.find({key1:value1, key2:value2})
+        OR:
+            db.col.find({$or: [{key1: value1}, {key2:value2}]})
+
+            
+
+

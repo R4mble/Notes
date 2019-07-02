@@ -44,8 +44,43 @@
  * 
  */
 class Solution {
+    /**
+     * √ Your runtime beats 27.55 % of java submissions
+     * √ Your memory usage beats 14.72 % of java submissions (33.7 MB)
+     * 啊, 有够丑陋的.
+     */
+    
     public int reverse(int x) {
-        
+        char[] arr = String.valueOf(x).toCharArray();
+        StringBuilder sb = new StringBuilder();
+        boolean zero = true;
+        for (int i=arr.length-1; i>0; i--) {
+            if (zero) {
+                if (arr[i] == 0) {
+                    continue;
+                } else {
+                    zero = false;
+                }
+            }
+
+            sb.append(arr[i]);
+        }
+        if (arr[0] == '-') {
+            sb.insert(0, '-');
+        } else {
+            sb.append(arr[0]);
+        }
+
+        int res = 0;
+        try {
+            res = Integer.parseInt(sb.toString());
+        } catch (Exception e) {
+            return 0;
+        }
+        return res;
     }
+
+
+    
 }
 
