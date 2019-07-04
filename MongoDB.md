@@ -3,6 +3,11 @@ title: MongoDB
 date: 2019-06-29 17:55:26
 ---
 
+查看数据库
+    show dbs
+查看数据表
+    show tables
+
 集合
     创建集合
         db.createColleaction(name, options)

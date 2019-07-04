@@ -50,7 +50,7 @@ class Solution {
      * 啊, 有够丑陋的.
      */
     
-    public int reverse(int x) {
+    public int reverseUgly(int x) {
         char[] arr = String.valueOf(x).toCharArray();
         StringBuilder sb = new StringBuilder();
         boolean zero = true;
@@ -80,7 +80,21 @@ class Solution {
         return res;
     }
 
-
-    
+    /**
+     *  √ Your runtime beats 100 % of java submissions
+     *  √ Your memory usage beats 12.22 % of java submissions (33.5 MB)
+     *  这个为啥这么吃内存
+     */
+    public int reverse(int x) {
+        int result = 0;
+        while (x != 0) {
+            int tail = x % 10;
+            int newResult = result * 10 + tail;
+            if ((newResult - tail) / 10 != result) return 0;
+            result = newResult;
+            x = x / 10;
+        }
+        return result;
+    }
 }
 
