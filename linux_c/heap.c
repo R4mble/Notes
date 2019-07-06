@@ -28,6 +28,7 @@ int *heap_array(int *old_ptr, int n) {
     //将ptr所指向的堆内存大小扩展为size,返回扩展后的内存基地址
     new_ptr = (int *)realloc(old_ptr, (size * sizeof(int)));
     new_ptr[0] = size;
+    
     //将新数据存入堆内存的尾端
     new_ptr[size - 1] = n;
 
