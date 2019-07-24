@@ -41,15 +41,7 @@ TreeSet
 HashTable
     使用synchronized保证线程安全.效率低下
 
-ConcurrentHashMap
-    分段锁.
-    跨段方法: size()和containsValue()
-        需要锁定整个表, 按顺序锁定所有段, 操作完毕后, 按顺序释放所有段的锁.
 
-    由Segment数组结构和HashEntry数组结构组成, Segment是一种可重入锁ReentrantLock,
-    一个ConcurrentHashMap包含一个Setment数组, 一个Setment里包含一个HashEntry数组,
-    每个HashEntry是一个链表结构的元素, 每个Segment守护一个HashEntry里的元素, 当对HashEntry
-    里的数据进行修改时, 必须先获得它的Setment锁.
 
     get
 
