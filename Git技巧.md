@@ -33,6 +33,8 @@ git技巧
     提交会与上一次提交合并成一个新的提交，之前的提交会被废弃掉。
     git commit --amend  
 
+    放弃commit, 回到未提交状态
+    git reset --soft HEAD^
 推分支到远程
     git push origin local_branch:remote_branch
 
