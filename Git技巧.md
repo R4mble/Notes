@@ -35,8 +35,13 @@ git技巧
 
     放弃commit, 回到未提交状态
     git reset --soft HEAD^
+
+    git reset --hard xxxx
+
 推分支到远程
     git push origin local_branch:remote_branch
+删除远程分支
+    git push origin --delete remote_branch
 
 查看历史:
     来查看最近一次提交的差异，当然也可以使用 git log -p 来查看所有的差异
