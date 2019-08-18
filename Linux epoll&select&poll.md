@@ -28,7 +28,12 @@ epoll 多路复用IO接口select/poll的增强版本
                 int epoll_create(int size);
                         创建一个epoll实例,通知内核监听size个fd. 创建成功后会占用一个fd,使用完之后要close(),否则fd可能会被耗尽
                 int epoll_ctl(int epfd, int op, int fd, struct epoll_events* event);
+                        注册每一个文件描述符,一旦某个文件描述符就绪,内核采用回调机制,迅速激活文件描述符
                 int epoll_wait(int epfd, struct epoll_event* events, int maxevents, int timeout);
+                        返回一个代表就绪描述符数量的值. mmap内存映射技术,省掉文件描述符在系统调用时复制的开销
+
+        Nginx使用了边缘触发:
+                ee.events = EPOLLIN|EPOLLOUT|EPOLLET
 
 select  
         文件描述符集合1 文件描述符集合2 文件描述符集合3                
@@ -41,7 +46,11 @@ select
         文件描述符个数有限制: 1024, 数据结构: 位图.
 
 poll
-        共用一个文件描述符集合,数据结构:链表
+        共用一个文件描述符集合,数据结构:链表, 
+        没有最大文件描述符数量的限制
+
+        select和poll一般不会丢失就绪的消息,使用水平触发. 将就绪的文件告诉进程后,如果进程没有对其进行IO操作,下次调用select()或poll()时
+        将再次报告这些文件描述符.
 
 epoll
         epoll_ctl: 1.增加监听的fd到红黑树中
