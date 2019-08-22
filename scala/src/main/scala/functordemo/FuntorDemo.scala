@@ -6,6 +6,8 @@ import cats.instances.list._
 import cats.instances.option._
 import cats.syntax.functor._
 
+import scala.language.higherKinds
+
 /**
   * @author Wangyl
   * @date 2019/8/20
