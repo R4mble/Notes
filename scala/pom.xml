@@ -10,9 +10,16 @@
 
     <dependencies>
         <!-- https://mvnrepository.com/artifact/org.typelevel/cats-core -->
+<!--        <dependency>-->
+<!--            <groupId>org.typelevel</groupId>-->
+<!--            <artifactId>cats-core_2.12</artifactId>-->
+<!--            <version>2.0.0-RC1</version>-->
+<!--        </dependency>-->
+
+        <!-- 果然版本要对齐, 卧槽 -->
         <dependency>
             <groupId>org.typelevel</groupId>
-            <artifactId>cats-core_2.12</artifactId>
+            <artifactId>cats-core_2.13</artifactId>
             <version>2.0.0-RC1</version>
         </dependency>
 
