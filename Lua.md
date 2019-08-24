@@ -1,3 +1,10 @@
+---
+title: Lua
+date: 2019-06-29 17:55:26
+tags: [Lua]
+categories: [Lua]
+---
+
 元表 Metatable
     改变table的行为,每个行为关联了对应的元方法.
     如: 定义两个table的相加操作.

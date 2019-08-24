@@ -1,3 +1,9 @@
+---
+title: Caffeine Cache
+date: 2019-04-05 00:05:00
+tags: [Cache]
+---
+
 Cache接口: 定义通用缓存操作的接口
     获取缓存的名字
     获取底层的缓存提供者

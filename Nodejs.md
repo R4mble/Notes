@@ -1,3 +1,11 @@
+---
+title: nodejs
+date: 2019-04-04 12:01:22
+tags: [nodejs]
+categories: [nodejs]
+---
+
+
 Nodejs适合I/O密集型应用,而不适合计算密集型应用.
 
 全局变量:

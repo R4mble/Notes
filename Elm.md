@@ -1,3 +1,9 @@
+---
+title: Elm
+date: 2019-04-05 00:05:00
+tags: [Elm, 函数式编程]
+---
+
 终端工具:
     elm repl
         交互. 编译代码到JS, 使用Node.js运行

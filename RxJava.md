@@ -1,3 +1,8 @@
+---
+title: RxJava  
+date: 2019-08-25 09:21:14  
+tags: [Java, RP]  
+---
 Observable
     被观察者, 决定什么时候触发事件和触发什么事件, 决定异步操作模块的顺序和次数.
 Observer

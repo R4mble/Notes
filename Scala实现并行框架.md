@@ -1,7 +1,7 @@
 ---
-title: Scala实现并行框架
-date: 2019-04-05 02:21:14
-tags: [Scala]
+title: Scala实现并行框架  
+date: 2019-04-05 09:21:14  
+tags: [Scala]  
 ---
 ```scala
 //接收一个未求值的A,返回一个并行结果(传名函数)

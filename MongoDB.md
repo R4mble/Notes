@@ -1,6 +1,8 @@
 ---
 title: MongoDB
 date: 2019-06-29 17:55:26
+tags: [MongoDB]
+categories: [MongoDB]
 ---
 
 查看数据库

@@ -1,6 +1,6 @@
 ---
 title: Ramda里的柯西化实现
-date: 2019-04-04 02:01:22
+date: 2019-04-04 12:01:22
 tags: [Ramda,函数式编程,柯西]
 categories: [探索Ramda]
 ---

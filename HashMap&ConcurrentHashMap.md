@@ -1,3 +1,10 @@
+---
+title: HashMap
+date: 2019-06-29 17:55:26
+tags: [HashMap]
+categories: [HashMap]
+---
+
 HashMap
    数组加链表
      初始容量 16            必须是2的n次方

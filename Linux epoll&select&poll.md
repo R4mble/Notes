@@ -1,3 +1,10 @@
+---
+title: Linux进程
+date: 2019-06-29 17:55:26
+tags: [Linux]
+categories: [Linux]
+---
+
 阻塞blocking IO
 非阻塞nonblocking IO
 io多路复用技术 IO multiplexing

@@ -1,3 +1,11 @@
+---
+title: Linux进程
+date: 2019-06-29 17:55:26
+tags: [Linux]
+categories: [Linux]
+---
+
+
 进程原理
     对操作系统所管理的硬件资源的请求.
     资源包括: 磁盘IO, 网络IO, 内存, CPU, 显卡.
