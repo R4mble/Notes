@@ -1,7 +1,0 @@
-业务特点:
-    service层不用接口
-    分为api层和controller层
-
-    分页对象PageData的使用:
-        
-    
