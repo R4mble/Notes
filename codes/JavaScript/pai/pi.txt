@@ -1,0 +1,32 @@
+x(z).z<a>.0 | x<w>.y<w>.0 | y(v).v(u).0
+
+x(z)的意思是从channel x接收到z, input prefix
+z<a>的意思是向channel z发送a, output prefix
+接收或发送完成，'.'之后的表达式才可以开始执行
+'|'（vertical pipe）在π里的含义是并发组合
+0表示一个无行为的过程（inaction）
+
+
+π只有一个reduction:
+x<y>.P | x(z).Q -> P | Q[y/z]
+含义是y从channel x发送出去之后，P才可以继续执行；同时x(z)前缀收到了y，Q得以继续执行，此时Q里的所有z都要替换成y。
+
+name: x
+receiveF: (z: Channel) => z.send(a, () => console.log('term 1 over'))
+sendF: null
+c: null
+
+---
+
+name: x
+receiveF: (z: Channel) => z.send(a, () => console.log('term 1 over'))
+sendF: () => y.send(w, () => console.log('term 2 over'))
+c: w
+
+
+y.send(w, () => console.log('term 2 over'))
+name: y
+receiveF: null
+sendF: () => console.log('term 2 over')
+c: w
+
