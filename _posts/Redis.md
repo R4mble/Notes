@@ -112,23 +112,27 @@ categories: [Redis]
     drop if no elements
 如果字符串已经设置了过期时间, 然后调用set方法修改它, 它的过期时间会消失.
 
-分布式锁
+### 分布式锁
 	setnx(set if not exist)
 	分布式锁逻辑流程:
-		setnx lock:codehole true
-			do something...
-		expire lock:codehole 5		
-		del lock:codehole
-	存在问题: setnx和expire操作之间如果进程挂掉就会造成死锁.
-	解决办法: redis2.8后加入set指令扩展参数,使这两个指令一起执行.
-		set lock:codehole true ex 5 nx
-			do something...
-		del lock:codehole
-	依然存在问题: 如果加锁和释放锁之间逻辑执行时间太长超出锁超时限制,
-		锁会过期,第二个线程重新持有锁. 第一个线程执行完逻辑后把锁释放了,
-		第三个线程就会在第二个线程逻辑执行完之前拿到了锁.
-	解决方案: 为set指令的value设置一个随机数,释放锁时检查随机数是否一致,
-		然后再删除key. 检查value和删除key不是原子操作,需要Lua脚本来处理.
+	
+    setnx lock:codehole true
+        do something...
+    expire lock:codehole 5		
+    del lock:codehole
+存在问题: setnx和expire操作之间如果进程挂掉就会造成死锁.
+
+解决办法: redis2.8后加入set指令扩展参数,使这两个指令一起执行.
+
+    set lock:codehole true ex 5 nx
+        do something...
+    del lock:codehole
+    
+依然存在问题: 如果加锁和释放锁之间逻辑执行时间太长超出锁超时限制,
+    锁会过期,第二个线程重新持有锁. 第一个线程执行完逻辑后把锁释放了,
+    第三个线程就会在第二个线程逻辑执行完之前拿到了锁.
+解决方案: 为set指令的value设置一个随机数,释放锁时检查随机数是否一致,
+    然后再删除key. 检查value和删除key不是原子操作,需要Lua脚本来处理.
 
 延时队列
 	blpop/brpop 阻塞读, 队列没数据时立即进入休眠状态,一旦数据到来,立刻
@@ -148,11 +152,12 @@ categories: [Redis]
 ### 位图(bitmap)
 比特位组成的数组.
 用途举例: 存用户一年的签到记录.
-bitcount
-	统计指定位置范围内1的个数,start和end是字节索引,必须是8的倍数.
-	要查找用户某个月签到多少天,需要将这个月覆盖的字节全部取出然后统计.
-bitpos 来查找指定范围内出现的第一个0或1
-bitfield 一次操作多个位
+
+    bitcount
+        统计指定位置范围内1的个数,start和end是字节索引,必须是8的倍数.
+        要查找用户某个月签到多少天,需要将这个月覆盖的字节全部取出然后统计.
+    bitpos 来查找指定范围内出现的第一个0或1
+    bitfield 一次操作多个位
 
 ###  HyperLogLog
 提供不精确的去重计数方案, 标准误差0.81%
@@ -218,7 +223,8 @@ pfmerge 将多个pf计数值累加形成新的pf值
 
 
 ### scan
-scan cursor [MATCH	pattern] [COUNT count]
+
+    scan cursor [MATCH pattern] [COUNT count]
 
 Redis中的key存在一个很大的字典中,数组加链表. scan指令返回的游标就是数组的位置索引,
 
@@ -238,7 +244,6 @@ Redis中的key存在一个很大的字典中,数组加链表. scan指令返回�
 字典扩容
 	当loadFactor达到阈值时,需要重新分配一个新的2倍大小的数组,然后将所有的元素
 	全部rehash挂到新的数组下面. 
-
 
 渐进式rehash
 	扩容时, 同时保留旧数组和新数组, 然后在定时任务中以及后续对hash指令操作中渐渐地将
