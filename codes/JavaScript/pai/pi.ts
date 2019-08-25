@@ -1,14 +1,14 @@
 class Channel {
    name: string
-   receiveF: Function
-   sendF: Function
+   receiveF: (c: Channel) => void
+   sendF: () => void
    c: Channel
 
    constructor (name: string) {
       this.name = name
     }
   
-    reduce () {
+    reduce (): void {
       if (!this.sendF || !this.receiveF) return
       console.log(`passing name ${this.c.name} via channel ${this.name}`)
       let rnd = Math.random()
@@ -21,14 +21,14 @@ class Channel {
       }
     }
   
-    send (c: Channel, f: Function) {
+    send (c: Channel, f: () => void): void {
       console.log(`${this.name} sending ${c.name}`)
       this.c = c
       this.sendF = f
       this.reduce()
     }
   
-    receive (f: Function) {
+    receive (f: (c: Channel) => void): void {
       console.log(`${this.name} receiving`)
       this.receiveF = f
       this.reduce()
