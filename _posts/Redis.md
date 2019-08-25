@@ -2,10 +2,9 @@
 title: Redis  
 date: 2019-08-25 09:21:14  
 tags: [Redis]  
+categories: [Redis]
+
 ---
-
-
-# Redis
 ------
 >  用途:  数据库, 缓存, 消息中间件, timeline, 计数器, 反向索引, 排行榜, 任务调度, 队列, 分布式锁.
 

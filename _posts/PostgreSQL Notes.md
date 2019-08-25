@@ -5,7 +5,6 @@ tags: [PostgreSQL]
 categories: [PostgreSQL]
 ---
 
-# PostgreSQL
 ## 特点
 - multi-version concurrency control (MVCC), Oracle中的快照隔离
 - 面向对象, 可以添加自定义函数.
@@ -62,3 +61,5 @@ categories: [PostgreSQL]
 - json与jsonb：
   - json是对输入文本的完整拷贝，保留输入的空格，重复键和顺序。处理函数必须在每个执行上重新解析。存储快，读取慢。
   - jsonb是解析输入后保存的二进制，在解析时会删除不必要的空格和重复键，顺序也会不同，使用时不用再次解析。支持索引。存储慢，读取快。
+
+

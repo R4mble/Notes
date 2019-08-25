@@ -2,9 +2,8 @@
 title: Elasticsearch
 date: 2019-04-27 23:33:37
 tags: [读书笔记]
+categories: [Elasticsearch]
 ---
-
-# Elasticsearch
 
 全文搜索引擎,分布式文档数据库,每个字段均是被索引的数据且可被搜索.
 
