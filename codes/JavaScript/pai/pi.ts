@@ -48,7 +48,7 @@ class Channel {
    * 答: js本身就是异步的,所以下面三个函数调用谁也不等谁,直接往后跑,算是并发执行了.
    * 
    * 2. receive不是接收一个Channel吗,怎么接收一个函数了?
-   * 答: receive接收一个 接收Channel z, 并使用z发送Channel a的函数.
+   * 答: receive接收一个 接收Channel z,并使用z继续send或者receive 的函数.
    * 
    * 3. send为什么有两个参数?
    * 答: 第一个参数是它要send的Channel, 第二个参数是send之后的动作.
