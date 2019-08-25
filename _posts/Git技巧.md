@@ -2,6 +2,7 @@
 title: Git技巧
 date: 2019-04-05 02:33:59
 tags: [Git]
+categories: [Git]
 ---
 ```
 git技巧
