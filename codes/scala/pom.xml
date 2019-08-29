@@ -10,18 +10,26 @@
 
     <dependencies>
         <!-- https://mvnrepository.com/artifact/org.typelevel/cats-core -->
-<!--        <dependency>-->
-<!--            <groupId>org.typelevel</groupId>-->
-<!--            <artifactId>cats-core_2.12</artifactId>-->
-<!--            <version>2.0.0-RC1</version>-->
-<!--        </dependency>-->
-
-        <!-- 果然版本要对齐, 卧槽 -->
         <dependency>
             <groupId>org.typelevel</groupId>
-            <artifactId>cats-core_2.13</artifactId>
+            <artifactId>cats-core_2.12</artifactId>
             <version>2.0.0-RC1</version>
         </dependency>
+
+        <!-- https://mvnrepository.com/artifact/com.chuusai/shapeless -->
+        <dependency>
+            <groupId>com.chuusai</groupId>
+            <artifactId>shapeless_2.12.0-M5</artifactId>
+            <version>2.3.1</version>
+        </dependency>
+
+
+        <!-- 果然版本要对齐, 卧槽 -->
+<!--        <dependency>-->
+<!--            <groupId>org.typelevel</groupId>-->
+<!--            <artifactId>cats-core_2.13</artifactId>-->
+<!--            <version>2.0.0-RC1</version>-->
+<!--        </dependency>-->
 
     </dependencies>
 

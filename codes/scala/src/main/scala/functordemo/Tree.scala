@@ -32,8 +32,8 @@ object Tree extends App {
 //  println(Branch(Leaf(10), Leaf(20)).map(_ * 2))
 
 //  val v1 = Tree.leaf(100).map(_ * 2)
-  println(v1)
+//  println(v1)
 //  val v2 = Tree.branch(Tree.leaf(10), Tree.leaf(20)).map(_ * 2)
-  println(v2)
+//  println(v2)
 
 }
