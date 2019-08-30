@@ -52,6 +52,7 @@
 
 - 增加映射
 
+
     PUT /secisland
     {
         "mappings": {
@@ -76,13 +77,14 @@ type已过时.一个index中最好只有一种type
 
 - 搜索
 
-    GET /megacorp/employee/_search
 
+    GET /megacorp/employee/_search
 - 轻量搜索
 
-    GET /megacorp/_search?q=last_name:Smith
 
+    GET /megacorp/_search?q=last_name:Smith
 - 查询表达式
+
 
     GET /megacorp/employee/_search
     {
@@ -94,6 +96,7 @@ type已过时.一个index中最好只有一种type
     }
 
 - range过滤器
+
 
     GET /megacorp/employee/_search
     {
@@ -115,6 +118,7 @@ type已过时.一个index中最好只有一种type
 
 - 全文搜索
 
+
     GET /megacorp/employee/_search
     {
         "query" : {
@@ -125,6 +129,7 @@ type已过时.一个index中最好只有一种type
     }    
 
 - 短语搜索, 精确匹配
+
 
     GET /megacorp/employee/_search
     {

@@ -1,2 +1,30 @@
-.vscode
+HELP.md
+/target/
+!.mvn/wrapper/maven-wrapper.jar
+
+### STS ###
+.apt_generated
+.classpath
+.factorypath
+.project
+.settings
+
+.sts4-cache
+
+### IntelliJ IDEA ###
 .idea
+.vs
+*.iws
+*.iml
+*.ipr
+*mvn*
+### NetBeans ###
+/nbproject/private/
+/nbbuild/
+/dist/
+/nbdist/
+/.nb-gradle/
+/build/
+
+### VS Code ###
+.vscode/
