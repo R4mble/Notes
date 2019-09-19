@@ -91,11 +91,6 @@ const compose = (f, g) => a => f(g(a))
 
 
 // 一些测试的例子
-
-const curry = f => a => b => f(a, b)
-const unCurry = f => (a, b) => f(a)(b)
-const compose = (f, g) => a => f(g(a))
-
 const print = console.log
 
 const add = (a, b) => a + b

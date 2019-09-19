@@ -83,3 +83,26 @@ Lucene的评分机制, 查询DSL, 底层索引控制.
 > Elasticsearch从5.X引入text和keyword，keyword适用于不分词字段，搜索时只能完全匹配.
 			   6.X彻底移除string, "index"的值只能是boolean变量.
 
+## 准实时索引的实现
+新收到的数据写到新的索引文件里.
+Lucene把每次生成的倒排索引, 叫做一个段. 使用一个commit文件记录索引内所有的segment. 
+生成segment的数据来源就是内存中的buffer.
+
+1) 当前索引有3个segment可用.
+2) 新接收的数据进入内存buffer
+3) 内存buffer生成一个新的segment, 刷到文件系统缓存中(默认1秒间隔, Lucene即可检索到这个新的segment), 
+   再由文件系统缓存刷到磁盘, commit文件同步更新
+
+    curl -XPOST http://127.0.0.1:9200/logstash-2015.06.21/_settings -d'
+    { “refresh_interval”: “10s” }
+
+
+### translog
+ES把数据写入内存buffer的同时,另外记录了一个translog日志.
+在文件系统缓存刷到磁盘的过程中如果发生了异常, ES会从commit位置开始, 恢复整个translog文件中的记录, 保证数据一致性.
+真正把segment刷到磁盘, 且commit文件进行更新时, translog文件才清空.称为flush
+ES默认每30分钟或当translog文件大于512MB时 主动进行一次flush
+ES默认每5秒强制刷新translog日志到磁盘上.(如果数据没备份,发生故障时确实有可能丢失5秒数据)
+
+### segment merge
+独立线程来进行segment数据归并.
