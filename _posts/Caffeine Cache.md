@@ -1,7 +1,7 @@
 ---
 title: Caffeine Cache
 date: 2019-04-05 00:05:00
-tags: [Cache]
+categories: [Others]
 ---
 
 Cache接口: 定义通用缓存操作的接口

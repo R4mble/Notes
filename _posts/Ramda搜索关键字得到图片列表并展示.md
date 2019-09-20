@@ -1,7 +1,8 @@
 ---
 title: Ramda搜索关键字得到图片列表并展示
 date: 2019-04-03 14:31:59
-tags: [Ramda,函数式编程,JavaScript]
+tags: [函数式编程]
+categories: [JavaScript]
 ---
 
 ```javascript

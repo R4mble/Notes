@@ -2,6 +2,7 @@
 title: Docker
 date: 2019-04-27 23:33:37
 tags: [读书笔记]
+categories: [Docker]
 ---
 
 利用Linux内核提供的namespace和CGroups为应用进程构架起沙箱和资源限制.

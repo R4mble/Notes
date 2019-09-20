@@ -1,7 +1,7 @@
 ---
 title: Haskell实现2048
 date: 2019-04-04 20:41:22
-tags: [Haskell, 2048, 函数式编程]
+tags: [函数式编程]
 categories: [Haskell]
 ---
 ```python

@@ -1,7 +1,6 @@
 ---
 title: Lua
 date: 2019-06-29 17:55:26
-tags: [Lua]
 categories: [Lua]
 ---
 

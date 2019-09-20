@@ -1,7 +1,7 @@
 ---
 title: Java里的for in
 date: 2019-04-05 02:42:51
-tags: [Java]
+categories: [Java]
 ---
  ```java       
 Element[] ele = new Element[5];

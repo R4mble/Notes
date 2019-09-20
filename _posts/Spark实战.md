@@ -1,7 +1,7 @@
 ---
 title: Spark实战
 date: 2019-04-05 02:38:56
-tags: [Spark]
+categories: [分布式]
 ---
 Spark
     快速: Spark有一个Directed Acyclic Graph(DAG有向无环图)执行引擎,支持循环数据流和内存计算.

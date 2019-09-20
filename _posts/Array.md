@@ -1,7 +1,7 @@
 ---
 title: Array
 date: 2019-04-02 17:55:26
-tags: [LeetCode, Array]
+tags: [LeetCode]
 categories: [数据结构与算法]
 ---
 1. [283. Move Zeroes](https://leetcode.com/problems/move-zeroes/)

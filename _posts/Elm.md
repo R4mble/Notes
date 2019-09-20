@@ -1,7 +1,7 @@
 ---
 title: Elm
 date: 2019-04-05 00:05:00
-tags: [Elm, 函数式编程]
+tags: [函数式编程]
 categories: [Elm]
 ---
 

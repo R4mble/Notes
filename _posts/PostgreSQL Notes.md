@@ -1,7 +1,6 @@
 ---
 title: PostgreSQL
 date: 2019-04-04 12:01:22
-tags: [PostgreSQL]
 categories: [SQL]
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: volatile&synchronized&Reentrantlock
 date: 2019-04-02 08:52:45
-categories: [算法]
+categories: [并发编程]
 ---
 5.volatile
     缓存一致性协议: 保证了每个缓存中使用的共享变量的副本是一致的

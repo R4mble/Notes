@@ -1,8 +1,8 @@
 ---
 title: Tree
 date: 2019-04-02 08:52:45
-tags: [LeetCode,Tree]
-categories: [算法]
+tags: [LeetCode]
+categories: [数据结构与算法]
 ---
 说起树,首先想到的就是递归,递归,还有递归...
 树的算法里确实有很多漂亮的递归,感觉比Scheme里面的递归还要迷人(主要是指迷惑的迷)

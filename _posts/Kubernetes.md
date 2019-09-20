@@ -1,6 +1,7 @@
 ---
 title: Kubernetes
 date: 2019-04-24 12:30:28
+categories: [Kubernetes]
 ---
 一切以服务为中心, 一切围绕服务运转.
 自动化.

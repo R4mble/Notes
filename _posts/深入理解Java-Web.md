@@ -1,7 +1,7 @@
 ---
 title: 深入理解Java Web
 date: 2019-04-05 02:40:42
-tags: [Java,Web,读书笔记]
+tags: [读书笔记]
 categories: [Java]
 ---
 Web请求过程

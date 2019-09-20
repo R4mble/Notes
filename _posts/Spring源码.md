@@ -1,6 +1,6 @@
 ---
 title: Spring源码
-tags: [Spring]
+categories: [Spring]
 ---
 Spring注解: 
     AnnotationConfigApplicationContext extends GenericApplicationContext 
