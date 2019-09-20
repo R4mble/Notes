@@ -57,7 +57,109 @@ typedef struct zset {
 节点层高为n的概率是(1-p) * p^(n-1), p=0.25
 节点的期望层高为1/(1-p), 即: 1.33
 
+#### 创建节点
+每个节点就是有序集合的一个元素, 创建节点时, 待创建节点的层高,分值,member等都已确定.
+```c
+zskiplistNode *zslCreateNode(int level, double score, sds ele) {
+    zskiplistNode *zn =
+        zmalloc(sizeof(*zn)+level*sizeof(struct zskiplistLevel));
+    zn->score = score;
+    zn->ele = ele;
+    return zn;
+}
 
+/* Create a new skiplist. */
+zskiplist *zslCreate(void) {
+    int j;
+    zskiplist *zsl;
+
+    zsl = zmalloc(sizeof(*zsl));
+    zsl->level = 1;
+    zsl->length = 0;
+    zsl->header = zslCreateNode(ZSKIPLIST_MAXLEVEL,0,NULL);
+    for (j = 0; j < ZSKIPLIST_MAXLEVEL; j++) {
+        zsl->header->level[j].forward = NULL;
+        zsl->header->level[j].span = 0;
+    }
+    zsl->header->backward = NULL;
+    zsl->tail = NULL;
+    return zsl;
+}
+```
+
+#### 插入节点
+1. 查找要插入的位置
+2. 调整跳跃表高度
+3. 插入节点
+4. 调整backward
+
+```c
+/* Insert a new node in the skiplist. Assumes the element does not already
+ * exist (up to the caller to enforce that). The skiplist takes ownership
+ * of the passed SDS string 'ele'. */
+zskiplistNode *zslInsert(zskiplist *zsl, double score, sds ele) {
+
+    // 插入节点时, 需要更新被插入节点每层的前一个节点. 将每层需要更新的节点记录在update[i]中
+    // x是跳跃表的头结点
+    zskiplistNode *update[ZSKIPLIST_MAXLEVEL], *x;
+    
+    // 记录当前层从header节点到update[i]节点所经历的步长, 在更新update[i]的span和设置
+    // 新插入节点的span时用到
+    unsigned int rank[ZSKIPLIST_MAXLEVEL];
+    int i, level;
+
+    serverAssert(!isnan(score));
+    x = zsl->header;
+    for (i = zsl->level-1; i >= 0; i--) {
+        /* store rank that is crossed to reach the insert position */
+        rank[i] = i == (zsl->level-1) ? 0 : rank[i+1];
+        while (x->level[i].forward &&
+                (x->level[i].forward->score < score ||
+                    (x->level[i].forward->score == score &&
+                    sdscmp(x->level[i].forward->ele,ele) < 0)))
+        {
+            rank[i] += x->level[i].span;
+            x = x->level[i].forward;
+        }
+        update[i] = x;
+    }
+    /* we assume the element is not already inside, since we allow duplicated
+     * scores, reinserting the same element should never happen since the
+     * caller of zslInsert() should test in the hash table if the element is
+     * already inside or not. */
+    level = zslRandomLevel();
+    if (level > zsl->level) {
+        for (i = zsl->level; i < level; i++) {
+            rank[i] = 0;
+            update[i] = zsl->header;
+            update[i]->level[i].span = zsl->length;
+        }
+        zsl->level = level;
+    }
+    x = zslCreateNode(level,score,ele);
+    for (i = 0; i < level; i++) {
+        x->level[i].forward = update[i]->level[i].forward;
+        update[i]->level[i].forward = x;
+
+        /* update span covered by update[i] as x is inserted here */
+        x->level[i].span = update[i]->level[i].span - (rank[0] - rank[i]);
+        update[i]->level[i].span = (rank[0] - rank[i]) + 1;
+    }
+
+    /* increment span for untouched levels */
+    for (i = level; i < zsl->level; i++) {
+        update[i]->level[i].span++;
+    }
+
+    x->backward = (update[0] == zsl->header) ? NULL : update[0];
+    if (x->level[0].forward)
+        x->level[0].forward->backward = x;
+    else
+        zsl->tail = x;
+    zsl->length++;
+    return x;
+}
+```
 
 SkipList 有序数据结构
     在每个节点维持多个指向其他节点的指针.
