@@ -1,5 +1,5 @@
 ---
-title: Elasticsearch
+title: es index
 date: 2019-04-27 23:33:37
 tags: [读书笔记]
 categories: [Elasticsearch]
@@ -26,32 +26,34 @@ categories: [Elasticsearch]
 
 - 创建自定义字段类型
 
-
-    PUT /secisland
-    {
-        "settings" : {
-           "number_of_shards": 3, "number_of_replicas": 2
-        },
-        "mappings": {
-            "secilog": {
-                "properties": {
-                    "logType": {
-                        "type": "string",
-                        "index": "not_analyzed"
-                    }
+```javascript
+PUT /secisland
+{
+    "settings" : {
+       "number_of_shards": 3, "number_of_replicas": 2
+    },
+    "mappings": {
+        "secilog": {
+            "properties": {
+                "logType": {
+                    "type": "string",
+                    "index": "not_analyzed"
                 }
             }
         }
     }
+}
 
-    PUT /secisland/_mapping/secilog
-    {
-        "properties": {
-            "logType": {
-                "type": "string"
-            }
+PUT /secisland/_mapping/secilog
+{
+    "properties": {
+        "logType": {
+            "type": "string"
         }
     }
+}
+```
+
     创建了一个名为secilog的类型，类型中有一个字段，字段的名称是logType，
     字段的数据类型是string，而且这个字段是不进行分析的。
     // 创建失败,

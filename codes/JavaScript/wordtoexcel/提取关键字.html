@@ -1,0 +1,139 @@
+<html>
+    <head>
+        <!-- <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /> -->
+        <title>提取关键字</title>
+        <script src="https://cdn.bootcss.com/xlsx/0.15.1/xlsx.mini.min.js"></script>
+        <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+    </head>
+
+    <body>
+
+        选择txt文档:
+        <input id='file' type="file" onchange="upload(this)" /><br>
+
+        输入关键字:
+        <input type="text" value="倾斜角度">
+        <input type="text" value="旋转角度">
+        <input type="text" value="我的位置">
+        <input type="text" value="水平误差">
+        <input type="text" value="海拔">
+        <input type="text" value="屏幕中点">
+        <button onclick="exportExcel()">导出</button>
+    </body>
+
+    <script>
+    
+    var txtContent;
+
+
+    function exportExcel() {
+
+        var keywords = ['倾斜角度', '旋转角度', '我的位置', '水平误差', '海拔', '屏幕中点'];
+
+        var contentArr = txtContent.split("\n");
+        var aoa = [];
+
+        for (let i in contentArr) {
+            for (let j in keywords) {
+                if (contentArr[i].indexOf(keywords[j]) != -1) {
+                var row = [];
+                var keyrow = contentArr[i].split(":");
+                var data = keyrow[1].trim();
+                row.push(keywords[j]);
+                row.push(data);
+
+                aoa.push(row);
+            }
+        }
+     
+        }
+    
+        var sheet = XLSX.utils.aoa_to_sheet(aoa);
+        openDownloadDialog(sheet2blob(sheet), '导出.xlsx');
+    }
+
+
+/**
+ * 通用的打开下载对话框方法，没有测试过具体兼容性
+ * @param url 下载地址，也可以是一个blob对象，必选
+ * @param saveName 保存文件名，可选
+ */
+function openDownloadDialog(url, saveName)
+{
+    if(typeof url == 'object' && url instanceof Blob)
+    {
+        url = URL.createObjectURL(url); // 创建blob地址
+    }
+    var aLink = document.createElement('a');
+    aLink.href = url;
+    aLink.download = saveName || ''; // HTML5新增的属性，指定保存文件名，可以不要后缀，注意，file:///模式下不会生效
+    var event;
+    if(window.MouseEvent) event = new MouseEvent('click');
+    else
+    {
+        event = document.createEvent('MouseEvents');
+        event.initMouseEvent('click', true, false, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
+    }
+    aLink.dispatchEvent(event);
+}
+    
+
+// 将一个sheet转成最终的excel文件的blob对象，然后利用URL.createObjectURL下载
+function sheet2blob(sheet, sheetName) {
+    sheetName = sheetName || 'sheet1';
+    var workbook = {
+        SheetNames: [sheetName],
+        Sheets: {}
+    };
+    workbook.Sheets[sheetName] = sheet;
+    // 生成excel的配置项
+    var wopts = {
+        bookType: 'xlsx', // 要生成的文件类型
+        bookSST: false, // 是否生成Shared String Table，官方解释是，如果开启生成速度会下降，但在低版本IOS设备上有更好的兼容性
+        type: 'binary'
+    };
+    var wbout = XLSX.write(workbook, wopts);
+    var blob = new Blob([s2ab(wbout)], {type:"application/octet-stream"});
+    // 字符串转ArrayBuffer
+    function s2ab(s) {
+        var buf = new ArrayBuffer(s.length);
+        var view = new Uint8Array(buf);
+        for (var i=0; i!=s.length; ++i) view[i] = s.charCodeAt(i) & 0xFF;
+        return buf;
+    }
+    return blob;
+}
+
+
+function upload(input) {
+    //支持chrome IE10
+    if (window.FileReader) {
+        var file = input.files[0];
+        filename = file.name.split(".")[0];
+        var reader = new FileReader();
+        reader.onload = function() {
+            txtContent = this.result;
+        }
+     reader.readAsText(file,"UTF-8");
+    }
+    //支持IE 7 8 9 10
+    else if (typeof window.ActiveXObject != 'undefined'){
+        var xmlDoc;
+        xmlDoc = new ActiveXObject("Microsoft.XMLDOM");
+        xmlDoc.async = false;
+        xmlDoc.load(input.value);
+        alert(xmlDoc.xml);
+    }
+    //支持FF
+    else if (document.implementation && document.implementation.createDocument) {
+        var xmlDoc;
+        xmlDoc = document.implementation.createDocument("", "", null);
+        xmlDoc.async = false;
+        xmlDoc.load(input.value);
+        alert(xmlDoc.xml);
+    } else {
+        alert('error');
+    }
+}
+    </script>
+</html>
