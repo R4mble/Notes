@@ -1,7 +1,6 @@
 ---
 title: JavaScript教程
 date: 2019-04-04 20:41:22
-tags: [JavaScript]
 categories: [JavaScript]
 ---
 基本语法

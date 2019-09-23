@@ -1,6 +1,7 @@
 ---
 title: 小红书系列 (2) - Scala与函数式编程
 date: 2019-09-14 17:42:45
+tags: [函数式编程]
 categories: [Scala]
 ---
 ## Scala与Haskell

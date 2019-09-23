@@ -1,8 +1,8 @@
 ---
 title: Category Theory
 date: 2019-04-27 23:33:37
-categories: [范畴论]
 tags: [读书笔记]
+categories: [范畴论]
 ---
 # Categories
 # Abstract structures

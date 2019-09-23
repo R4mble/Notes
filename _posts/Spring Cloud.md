@@ -1,7 +1,7 @@
 ---
 title: Spring Cloud
 date: 2019-04-05 02:39:49
-tags: [Spring]
+categories: [Spring]
 ---
 
 Spring Cloud

@@ -1,7 +1,6 @@
 ---
 title: Golang初探
 date: 2019-05-07 14:04:46
-tags:
 categories: [Go]
 ---
 # 如何掌握一门编程语言?

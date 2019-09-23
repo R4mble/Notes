@@ -1,8 +1,8 @@
 ---
 title: Weekly Contest 130
 date: 2019-04-02 07:01:37
-tags: [LeetCode,二进制操作]
-categories: [LeetCode Weekly Contest,算法]
+tags: [LeetCode]
+categories: [数据结构与算法]
 ---
 # [1018. Binary Prefix Divisible By 5](https://leetcode.com/problems/binary-prefix-divisible-by-5/)
 

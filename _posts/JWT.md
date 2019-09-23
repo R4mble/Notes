@@ -1,6 +1,7 @@
 ---
 title: JWT
 date: 2019-04-24 02:30:28
+categories: [Others]
 ---
 1. 了解JWT相关知识
         JWT组成: 

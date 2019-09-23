@@ -1,7 +1,6 @@
 ---
 title: MyBatis
 date: 2019-04-04 12:01:22
-tags: [MyBatis]
 categories: [MyBatis]
 ---
 

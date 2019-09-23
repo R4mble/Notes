@@ -1,7 +1,6 @@
 ---
 title: linux
 date: 2019-05-30 13:07:21
-tags:
 categories: [Linux]
 ---
 # uptime

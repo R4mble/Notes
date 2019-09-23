@@ -1,7 +1,7 @@
 ---
 title: Ramda中的lens源码解读
 date: 2019-04-03 01:12:57
-tags: [函数式编程,Ramda,lens]
+tags: [函数式编程]
 categories: [JavaScript]
 ---
 先上源码:

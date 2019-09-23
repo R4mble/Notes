@@ -1,7 +1,7 @@
 ---
 title: Java语法糖
 date: 2019-05-14 01:35:59
-tags: [Java]
+categories: [Java]
 ---
 # Switch对String的支持
 语法糖:

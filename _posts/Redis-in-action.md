@@ -1,8 +1,8 @@
 ---
 title: Redis in action
 date: 2019-04-05 12:36:56
+tags: [读书笔记]
 categories: [Redis]
-tags: [Redis,读书笔记]
 ---
 Redis in action
     4. 数据安全与性能保障

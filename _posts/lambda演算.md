@@ -1,9 +1,7 @@
 ---
 title: lambda演算入门
 date: 2019-04-03 14:31:59
-tags: [lambda演算,函数式编程]
-
-
+tags: [函数式编程]
 ---
 来写一写lambda演算里的东西,主要是用代换模型人肉parse.
 ## 求值

@@ -1,7 +1,7 @@
 ---
 title: Ramda碎碎念
 date: 2019-04-04 12:01:22
-tags: [Ramda,函数式编程,柯西]
+tags: [函数式编程]
 categories: [JavaScript]
 ---
 

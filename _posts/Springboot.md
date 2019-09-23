@@ -1,7 +1,7 @@
 ---
 title: SpringBoot
 date: 2019-04-02 08:52:45
-categories: [SpringBoot]
+categories: [Spring]
 ---
 @Autowired
     先根据类型找bean，如果对应类型的bean不唯一，则根据属性名称和bean的名称进行匹配。

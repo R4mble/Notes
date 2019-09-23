@@ -1,7 +1,6 @@
 ---
 title: 神秘的Scala implicit
 date: 2019-04-05 20:41:22
-tags: [Scala]
 categories: [Scala]
 ---
 # 神秘的Scala implicit
